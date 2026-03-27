@@ -1,0 +1,206 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 999;
+}
+
+.dialog.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+.dialog.inline {
+    position: relative;
+    margin: 24px auto;
+    z-index: 1;
+}
+
+.dialog {
+    background: #1e1e2e;
+    color: #e0e0e0;
+    border-radius: 4px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+    width: 560px;
+    min-height: 300px;
+    max-height: 80vh;
+    height: 420px;
+    resize: vertical;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.dialog-header {
+    background: #3db9c9;
+    color: #fff;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.btn-close {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.dialog-body {
+    background: #1e1e2e;
+    padding: 16px 20px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.form-row {
+    color: #aaa;
+    display: flex;
+    align-items: center;
+    margin-bottom: 14px;
+    gap: 12px;
+}
+
+.form-row label {
+    width: 90px;
+    flex-shrink: 0;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.form-row input[type="text"] {
+    background: #2a2a3e;
+    color: #e0e0e0;
+    flex: 1;
+    padding: 6px 10px;
+    border: 1px solid #444;
+    border-radius: 3px;
+    font-size: 0.9rem;
+}
+
+.criteria-row {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+}
+
+.criteria-row select,
+.criteria-row input {
+    background: #2a2a3e;
+    color: #e0e0e0;
+    padding: 5px 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 0.85rem;
+}
+
+.criteria-row select:first-child {
+    width: 90px;
+}
+
+.criteria-row select:nth-child(2) {
+    width: 120px;
+}
+
+.criteria-row input {
+    width: 100px;
+}
+
+.btn-remove {
+    background: #e05567;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    width: 28px;
+    height: 28px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.btn-remove:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.btn-add-row {
+    background: none;
+    border: 1px solid #555;
+    border-radius: 3px;
+    padding: 5px 14px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    margin-top: 4px;
+    color: #aaa;
+}
+
+.btn-add-row:hover {
+    background: #2a2a3e;
+}
+
+.dialog-footer {
+    background: #1e1e2e;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    border-top: 1px solid #2a2a3e;
+    flex-shrink: 0;
+}
+
+.btn-primary {
+    background: #3db9c9;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 8px 24px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.btn-primary:disabled {
+    background: #aaa;
+    cursor: not-allowed;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #2fa8b8;
+}
+
+.btn-secondary {
+    background: #666;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 8px 24px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    background: #555;
+}
+
+.error {
+    color: #e05567;
+    font-size: 0.75rem;
+    margin-top: 2px;
+    display: block;
+}
+
+.input-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+}

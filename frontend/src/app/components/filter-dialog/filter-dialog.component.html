@@ -1,0 +1,55 @@
+<div class="overlay" *ngIf="isModal" (click)="onClose()"></div>
+
+<div class="dialog" [class.modal]="isModal" [class.inline]="!isModal">
+
+    <div class="dialog-header">
+        <span>{{ filter ? 'Edit Filter' : 'New Filter' }}</span>
+        <button class="btn-close" (click)="onClose()">✕</button>
+    </div>
+
+    <div class="dialog-body">
+        <div class="form-row">
+            <label>Filter name</label>
+            <div class="input-wrap">
+                <input type="text" [(ngModel)]="filterName" placeholder="My Filter" (blur)="filterNameTouched = true" />
+                <span class="error" *ngIf="filterNameTouched && filterName.trim().length === 0">
+                    Filter name is required
+                </span>
+            </div>
+        </div>
+        <div class="criteria-row" *ngFor="let criteria of criteriaList; let i = index">
+            <select [(ngModel)]="criteria.type" (ngModelChange)="onTypeChange(criteria)">
+                <option value="AMOUNT">Amount</option>
+                <option value="TITLE">Title</option>
+                <option value="DATE">Date</option>
+            </select>
+
+            <select [(ngModel)]="criteria.criteria_condition">
+                <option *ngFor="let cond of getConditions(criteria.type)" [value]="cond">
+                    {{cond | conditionLabel}}
+                </option>
+            </select>
+
+            <ng-container [ngSwitch]="criteria.type">
+                <div *ngSwitchCase="'AMOUNT'" class="input-wrap">
+                    <input type="text" [(ngModel)]="criteria.criteria_value" placeholder="0" />
+                    <span class="error" *ngIf="criteria.criteria_value !== '' && isNaN(+criteria.criteria_value)">
+                        Must be a number
+                    </span>
+                </div>
+                <input *ngSwitchCase="'TITLE'" type="text" [(ngModel)]="criteria.criteria_value" />
+                <input *ngSwitchCase="'DATE'" type="date" [(ngModel)]="criteria.criteria_value" />
+            </ng-container>
+
+            <button class="btn-remove" (click)="removeCriteria(i)" [disabled]="criteriaList.length === 1">-</button>
+        </div>
+
+        <button class="btn-add-row" (click)="addCriteria()">+ ADD ROW</button>
+
+    </div>
+
+    <div class="dialog-footer">
+        <button class="btn-secondary" (click)="onClose()">CLOSE</button>
+        <button class="btn-primary" (click)="saveFilter()" [disabled]="!isValid()">SAVE</button>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+### Get all filters
+GET http://localhost:8080/api/filters
+
+### Get all criteria
+GET http://localhost:8080/api/criteria
+
+### Create a filter
+POST http://localhost:8080/api/filters
+Content-Type: application/json
+
+{
+  "name": "Test Filter",
+  "criteriaList": [
+    {
+      "type": "AMOUNT",
+      "criteria_condition": "MORE_THAN",
+      "criteria_value": "100"
+    }
+  ]
+}

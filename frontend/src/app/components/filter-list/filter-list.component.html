@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="header">
+    <h1>Filters</h1>
+    <div class="header-controls">
+      <label class="modal-toggle">
+        <input type="checkbox" [checked]="!isModal" (change)="isModal = !isModal" />
+        Non-modal mode
+      </label>
+      <button class="btn-primary" (click)="openDialog()">Add Filter</button>
+    </div>
+  </div>
+
+  <table class="filter-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Criteria</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let filter of filters">
+        <td>{{ filter.name }}</td>
+        <td>
+          <span *ngFor="let criteria of filter.criteriaList">
+            {{ criteria.type }} {{ criteria.criteria_condition }} {{ criteria.criteria_value }}
+          </span>
+        </td>
+        <td>
+          <button class="btn-edit" (click)="openDialog(filter)">Edit</button>
+          <button class="btn-delete" (click)="deleteFilter(filter.id!)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <app-filter-dialog *ngIf="showDialog" [filter]="selectedFilter" [isModal]="isModal" (close)="closeDialog()">
+  </app-filter-dialog>
+</div>
