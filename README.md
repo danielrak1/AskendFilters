@@ -4,15 +4,16 @@ A full-stack application for creating and managing filters with dynamic criteria
 
 ---
 
+## Prerequisites
+
+You need Java 25+, Maven 3.9+, Node.js 20+, Angular CLI, and Docker installed before running the steps below.
+
+
 ## Running the App
 
 ### 1. Set up environment variables
 
-Copy the example env file and fill in your database credentials:
-
-```bash
-cp .env.example .env
-```
+Copy .env.example to .env and fill in your PostgreSQL credentials."
 
 ### 2. Start the database
 
@@ -29,6 +30,8 @@ mvn spring-boot:run
 
 Runs on **http://localhost:8080**. Tables and sample data are created automatically on first startup.
 
+Swagger UI is available at: http://localhost:8080/swagger-ui/index.html
+
 ### 4. Start the frontend
 
 ```bash
@@ -38,9 +41,3 @@ ng serve
 ```
 
 Open **http://localhost:4200** in your browser.
-
----
-
-## Prerequisites
-
-You need Java 25+, Maven 3.9+, Node.js 20+, Angular CLI (`npm install -g @angular/cli`), and Docker installed before running the steps above.
